@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+
+    <title>Show List</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="lib/jquery-3.2.0.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+<div class="conteiner">
+    <section class="fromlist" ng-app="shopList" ng-controller="shopListCtrl">
+        <div class="title">Shopping List</div>
+        <div class="item" ng-class="{bought: products[$index].bought}" ng-repeat="product in products" ng-click="bought($index)">
+            {{product.text}}
+            <span class="closeicon" ng-click="removeItem($index)">&times;</span>
+        </div>
+        <div class="inputfield">
+            <input ng-model="newItem" placeholder="Add new item here" class="inputItem" required>
+            <button ng-click="addItem()" ng-disabled="!newItem.length">Add</button>
+        </div>
+    </section>
+</div>
+</body>
+</html>
